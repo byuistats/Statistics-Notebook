@@ -69,9 +69,7 @@ h6 {
 </style>
 
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -96,6 +94,9 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
+summary {
+  display: list-item;
+}
 </style>
 
 
@@ -110,7 +111,6 @@ body {
   padding-top: 56px;
   margin-top: -56px;
 }
-
 .section h2 {
   padding-top: 56px;
   margin-top: -56px;
@@ -130,6 +130,43 @@ body {
 .section h6 {
   padding-top: 56px;
   margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -151,19 +188,85 @@ $(document).ready(function () {
 });
 </script>
 
-
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
 });
 </script>
 
 <!-- code folding -->
 
 
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
 
 
 
@@ -297,6 +400,7 @@ $(document).ready(function () {
 <hr />
 <!-- This is how to comment text out. You can comment out the above instructions if you wish. Comments allow the text to remain in the Rmd file, but not be displayed in the html file. -->
 <p><a href="RMarkdownHints.html">Customization Help</a></p>
+<p>NONPARAMETRIC EQUIVALENT MEANS THAT IT IS A TEST TO BE USED WHEN THE CONDITIONS FOR ITS EQUIVALENT ARE NOT MET</p>
 <hr />
 <div style="float:left;width:125px;" align="center">
 <p><img src="Images/QuantY.png" width=35px;></p>
@@ -304,6 +408,23 @@ $(document).ready(function () {
 <div style="padding-left:125px;">
 <!-- Add your customizations in the area below: -->
 <p><strong>1 Quantitative Variable</strong></p>
+<p>One Sample t Test</p>
+<p>-Sample is representative of the population</p>
+<p>-Sample distribution of the mean can be assumed to be normal.</p>
+<p>H0: u = some number</p>
+<p>Ha: u = &gt;|=|&lt; some number</p>
+<p>Paired Samples t Test</p>
+<p>-Used for hypothesized value for the difference of the means ud</p>
+<p>-Pre-test post-test scenarios. Same subject, testing two different things</p>
+<p>-Sample mean of the differencess can be assumed to be normal.</p>
+<p>H0: ud = some number, usually 0</p>
+<p>Ha: ud &gt;|=|&lt; some number, usually 0</p>
+<p>Wilcoxon Signed-Rank Test</p>
+<p>-Test value of the median of a) one sample of quantitaive data or b) one set of differences from paired data</p>
+<p>-Nonparametric equivalent of the t-test (one sample or paired)</p>
+<p>-Best for not normal small samples</p>
+<p>H0: median of diff = 0</p>
+<p>Ha: median of diff &gt;|=|&lt; 0</p>
 <!------------------------------------------------>
 </div>
 <div style="clear:both;">
@@ -316,6 +437,21 @@ $(document).ready(function () {
 <div style="padding-left:125px;">
 <!-- Add your customizations in the area below: -->
 <p><strong>1 Quantitative Variable | 2 Groups</strong></p>
+<p>Independent Samples t Test</p>
+<p>-Two different subjects tested on one thing</p>
+<p>-Distribution of difference of the sample means can be assumed to be normal.</p>
+<p>-Sample size of each group is 30 or more.</p>
+<p>H0: u1 - u2 =some number, usually 0</p>
+<p>Ha: u1 - u2 &gt;|=|&lt; some number, usually 0</p>
+<p>Wilcoxon Rank Sum (Mann-Whitney) Test</p>
+<p>-Testing equality of the medians of two distributions of a quantitative variable</p>
+<p>-Nonparametric equivalent of Independent Samples t Test</p>
+<p>-The test is negatively affected when there are ties (repeated values), but it’s ok if there’re only a few of them</p>
+<p>H0: difference in medians = 0</p>
+<p>Ha: difference in medians != 0</p>
+<p>Or</p>
+<p>H0: distributions are stochastically equal</p>
+<p>Ha: one distribution is stochastically greater than the other</p>
 <!------------------------------------------------>
 </div>
 <div style="clear:both;">
@@ -328,6 +464,15 @@ $(document).ready(function () {
 <div style="padding-left:125px;">
 <!-- Add your customizations in the area below: -->
 <p><strong>1 Quantitative Variable | 3+ Groups</strong></p>
+<p>ANOVA</p>
+<p>-EACH QUALITATIVE FACTOR HAS TO HAVE 3 LEVELS</p>
+<p>-Testing the equality of several means simultaneously.</p>
+<p>-One quantitative with many qualitative variables.</p>
+<p>-Sample is normally distributed</p>
+<p>-Population variance in each group can be assumed to be the same (when residuals show constant variance, are similarly spread out)</p>
+<p>See ANOVA for Hypotheses</p>
+<p>Kruskal-Wallis Rank Sum</p>
+<p>-Nonparametric equivalent of a one-way ANOVA</p>
 <!------------------------------------------------>
 </div>
 <div style="clear:both;">
@@ -340,6 +485,8 @@ $(document).ready(function () {
 <div style="padding-left:125px;">
 <!-- Add your customizations in the area below: -->
 <p><strong>2 Quantitative Variables</strong></p>
+<p>Linear Regression</p>
+<p>-Determine which explanatory variable have a significant effect on the mean of the quantitative response variable (the one we’re trying to predict).</p>
 <!------------------------------------------------>
 </div>
 <div style="clear:both;">
@@ -352,6 +499,9 @@ $(document).ready(function () {
 <div style="padding-left:125px;">
 <!-- Add your customizations in the area below: -->
 <p><strong>1 Quantitative Response | Multiple Explanatory Variables</strong></p>
+<p>Multiple Linear Regression</p>
+<p>-More than one explanatory variables</p>
+<p>EXAMPLE if we want to predict the income of a person based on gender, height, and years of work experience, income would be Y, and all others would be X1, X2, X3…</p>
 <!------------------------------------------------>
 </div>
 <div style="clear:both;">
@@ -364,6 +514,10 @@ $(document).ready(function () {
 <div style="padding-left:125px;">
 <!-- Add your customizations in the area below: -->
 <p><strong>Binomial Response | 1 Explanatory Variable</strong></p>
+<p>Simple Logistic Regression</p>
+<p>-Binary response (1 or 0)</p>
+<p>-Probability is given by e^(b0 + b1)/(1+e^(b0+b1))</p>
+<p>-Odds are given by e^(b0+b1)</p>
 <!------------------------------------------------>
 </div>
 <div style="clear:both;">
@@ -376,6 +530,7 @@ $(document).ready(function () {
 <div style="padding-left:125px;">
 <!-- Add your customizations in the area below: -->
 <p><strong>Binomial Response | Multiple Explanatory Variables</strong></p>
+<p>Multiple Logistic Regression</p>
 <!------------------------------------------------>
 </div>
 <div style="clear:both;">
@@ -388,6 +543,12 @@ $(document).ready(function () {
 <div style="padding-left:125px;">
 <!-- Add your customizations in the area below: -->
 <p><strong>2 Qualitative Variables</strong></p>
+<p>Chi-squared Test of Independence</p>
+<p>-Association testing for two qualitative variables with at least two levels to each variable</p>
+<p>-Comparing observed counts to the expected counts in a contingency table to decide if two qualitative variables are associated (Ha) or are independent (H0), not associated</p>
+<p>-Expected counts are required to be 5 or more for the test to be appropriate</p>
+<p>Nonparametric Chi-squared Test</p>
+<p>-Do this when all observed counts are at least 1.</p>
 <!------------------------------------------------>
 </div>
 <div style="clear:both;">

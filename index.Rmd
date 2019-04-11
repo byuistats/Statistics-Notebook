@@ -19,6 +19,9 @@ To begin customizing, [download](https://github.com/saundersg/Statistics-Noteboo
 
 [Customization Help](RMarkdownHints.html)
 
+
+NONPARAMETRIC EQUIVALENT MEANS THAT IT IS A TEST TO BE USED WHEN THE CONDITIONS FOR ITS EQUIVALENT ARE NOT MET
+
 ----
 
 <div style="float:left;width:125px;" align=center>
@@ -30,8 +33,41 @@ To begin customizing, [download](https://github.com/saundersg/Statistics-Noteboo
 **1 Quantitative Variable**
 
 
+One Sample t Test
+
+-Sample is representative of the population
+
+-Sample distribution of the mean can be assumed to be normal.
+
+H0: u = some number
+
+Ha: u = >|=|< some number
 
 
+Paired Samples t Test
+
+-Used for hypothesized value for the difference of the means ud
+
+-Pre-test post-test scenarios. Same subject, testing two different things
+
+-Sample mean of the differencess can be assumed to be normal.
+
+H0: ud = some number, usually 0
+
+Ha: ud >|=|< some number, usually 0
+
+
+Wilcoxon Signed-Rank Test
+
+-Test value of the median of a) one sample of quantitaive data or b) one set of differences from paired data
+
+-Nonparametric equivalent of the t-test (one sample or paired)
+
+-Best for not normal small samples
+
+H0: median of diff = 0
+
+Ha: median of diff >|=|< 0
 
 
 
@@ -51,6 +87,36 @@ To begin customizing, [download](https://github.com/saundersg/Statistics-Noteboo
 **1 Quantitative Variable | 2 Groups**
 
 
+Independent Samples t Test
+
+-Two different subjects tested on one thing
+
+-Distribution of difference of the sample means can be assumed to be normal.
+
+-Sample size of each group is 30 or more.
+
+H0: u1 - u2 =some number, usually 0
+
+Ha: u1 - u2 >|=|< some number, usually 0
+
+
+Wilcoxon Rank Sum (Mann-Whitney) Test
+
+-Testing equality of the medians of two distributions of a quantitative variable
+
+-Nonparametric equivalent of Independent Samples t Test
+
+-The test is negatively affected when there are ties (repeated values), but it's ok if there're only a few of them
+
+H0: difference in medians = 0
+
+Ha: difference in medians != 0
+
+Or
+
+H0: distributions are stochastically equal
+
+Ha: one distribution is stochastically greater than the other
 
 
 
@@ -71,7 +137,24 @@ To begin customizing, [download](https://github.com/saundersg/Statistics-Noteboo
 **1 Quantitative Variable | 3+ Groups**
 
 
+ANOVA
 
+-EACH QUALITATIVE FACTOR HAS TO HAVE 3 LEVELS
+
+-Testing the equality of several means simultaneously.
+
+-One quantitative with many qualitative variables.
+
+-Sample is normally distributed
+
+-Population variance in  each group can be assumed to be the same (when residuals show constant variance, are similarly spread out)
+
+See ANOVA for Hypotheses
+
+
+Kruskal-Wallis Rank Sum
+
+-Nonparametric equivalent of a one-way ANOVA
 
 
 
@@ -91,6 +174,9 @@ To begin customizing, [download](https://github.com/saundersg/Statistics-Noteboo
 **2 Quantitative Variables**
 
 
+Linear Regression
+
+-Determine which explanatory variable have a significant effect on the mean of the quantitative response variable (the one we're trying to predict).
 
 
 
@@ -111,6 +197,11 @@ To begin customizing, [download](https://github.com/saundersg/Statistics-Noteboo
 **1 Quantitative Response | Multiple Explanatory Variables**
 
 
+Multiple Linear Regression
+
+-More than one explanatory variables
+
+EXAMPLE if we want to predict the income of a person based on gender, height, and years of work experience, income would be Y, and all others would be X1, X2, X3...
 
 
 
@@ -130,6 +221,13 @@ To begin customizing, [download](https://github.com/saundersg/Statistics-Noteboo
 
 **Binomial Response | 1 Explanatory Variable**
 
+Simple Logistic Regression
+
+-Binary response (1 or 0)
+
+-Probability is given by e^(b0 + b1)/(1+e^(b0+b1))
+
+-Odds are given by e^(b0+b1)
 
 
 
@@ -150,6 +248,7 @@ To begin customizing, [download](https://github.com/saundersg/Statistics-Noteboo
 
 **Binomial Response | Multiple Explanatory Variables**
 
+Multiple Logistic Regression
 
 
 
@@ -170,8 +269,18 @@ To begin customizing, [download](https://github.com/saundersg/Statistics-Noteboo
 
 **2 Qualitative Variables**
 
+Chi-squared Test of Independence
+
+-Association testing for two qualitative variables with at least two levels to each variable
+
+-Comparing observed counts to the expected counts in a contingency table to decide if two qualitative variables are associated (Ha) or are independent (H0), not associated
+
+-Expected counts are required to be 5 or more for the test to be appropriate
 
 
+Nonparametric Chi-squared Test
+
+-Do this when all observed counts are at least 1.
 
 
 
